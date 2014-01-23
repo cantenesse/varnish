@@ -9,8 +9,9 @@ class Chef::Recipe
 		key "http://repo.varnish-cache.org/#{node['platform']}/GPG-key.txt"
 	  end
 	when "rhel"
+	  major_version = node[:platform_version].split('.')[0]
       yum_repository 'varnish-cache' do
-        url "http://repo.varnish-cache.org/redhat/varnish-3.0/el5/$basearch"
+        url "http://repo.varnish-cache.org/redhat/varnish-3.0/el#{node['major_version']}/$basearch"
         gpgcheck false
         action :create
 	  end
