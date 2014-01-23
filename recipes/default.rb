@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+include_repo_recipe(node['platform_family'])
+
 package "varnish"
 
 template "#{node['varnish']['dir']}/#{node['varnish']['vcl_conf']}" do
